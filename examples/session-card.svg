@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="700" height="320" viewBox="0 0 700 320" font-family="ui-sans-serif,Segoe UI,Helvetica,Arial,sans-serif">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#1a1b26"/><stop offset="1" stop-color="#24283b"/>
+    </linearGradient>
+    <linearGradient id="ctx" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#7aa2f7" stop-opacity="0.7"/>
+      <stop offset="1" stop-color="#7aa2f7" stop-opacity="0.05"/>
+    </linearGradient>
+  </defs>
+  <rect width="700" height="320" rx="18" fill="url(#bg)"/>
+  <text x="40" y="58" fill="#c0caf5" font-size="15" font-weight="700" letter-spacing="2">▶ CLAUDEREPLAY</text>
+  <text x="660" y="58" fill="#565f89" font-size="13" text-anchor="end">2026-06-13</text>
+  <text x="40" y="104" fill="#ffffff" font-size="26" font-weight="800">Publish project</text>
+  <text x="40" y="134" fill="#7dcfff" font-size="14">opus-4-8 · 28m 19s</text>
+  <g font-size="13">
+    <g><text x="40" y="168" fill="#ffffff" font-size="22" font-weight="800">1</text><text x="40" y="184" fill="#565f89" font-size="11">prompts</text></g>
+    <g><text x="175" y="168" fill="#ffffff" font-size="22" font-weight="800">72</text><text x="175" y="184" fill="#565f89" font-size="11">tool calls</text></g>
+    <g><text x="310" y="168" fill="#ffffff" font-size="22" font-weight="800">44</text><text x="310" y="184" fill="#565f89" font-size="11">file edits</text></g>
+    <g><text x="445" y="168" fill="#ffffff" font-size="22" font-weight="800">5</text><text x="445" y="184" fill="#565f89" font-size="11">errors</text></g>
+    <g><text x="580" y="168" fill="#ffffff" font-size="22" font-weight="800">114k</text><text x="580" y="184" fill="#565f89" font-size="11">ctx peak</text></g>
+  </g>
+  <text x="40" y="204" fill="#565f89" font-size="11" letter-spacing="1">CONTEXT GROWTH → 114,817 tokens</text>
+  <path d="M 40 248 L 40.0 238.0 L 43.8 238.0 L 47.6 238.0 L 51.3 235.8 L 55.1 235.8 L 58.9 235.8 L 62.7 235.5 L 66.5 235.5 L 70.2 235.5 L 74.0 234.9 L 77.8 234.9 L 81.6 234.6 L 85.4 234.4 L 89.1 234.4 L 92.9 234.4 L 96.7 233.5 L 100.5 233.5 L 104.3 233.5 L 108.0 233.0 L 111.8 233.0 L 115.6 233.0 L 119.4 232.7 L 123.2 232.7 L 127.0 232.7 L 130.7 231.7 L 134.5 231.7 L 138.3 231.7 L 142.1 231.1 L 145.9 230.8 L 149.6 230.8 L 153.4 230.0 L 157.2 230.0 L 161.0 230.0 L 164.8 229.4 L 168.5 229.4 L 172.3 229.4 L 176.1 228.9 L 179.9 228.9 L 183.7 228.9 L 187.4 228.8 L 191.2 228.7 L 195.0 228.6 L 198.8 228.5 L 202.6 228.3 L 206.3 228.2 L 210.1 228.2 L 213.9 228.2 L 217.7 227.9 L 221.5 227.4 L 225.2 227.4 L 229.0 227.4 L 232.8 226.4 L 236.6 226.4 L 240.4 226.4 L 244.1 224.9 L 247.9 224.8 L 251.7 224.8 L 255.5 224.6 L 259.3 224.6 L 263.0 224.6 L 266.8 224.0 L 270.6 224.0 L 274.4 224.0 L 278.2 223.6 L 282.0 223.6 L 285.7 223.6 L 289.5 222.9 L 293.3 222.9 L 297.1 222.9 L 300.9 222.3 L 304.6 222.1 L 308.4 222.1 L 312.2 222.1 L 316.0 221.9 L 319.8 221.9 L 323.5 221.7 L 327.3 221.7 L 331.1 221.7 L 334.9 221.3 L 338.7 221.3 L 342.4 221.3 L 346.2 221.1 L 350.0 221.1 L 353.8 221.1 L 357.6 220.8 L 361.3 220.8 L 365.1 220.7 L 368.9 220.7 L 372.7 220.7 L 376.5 219.1 L 380.2 219.1 L 384.0 219.1 L 387.8 218.4 L 391.6 217.8 L 395.4 217.6 L 399.1 217.6 L 402.9 217.3 L 406.7 217.3 L 410.5 217.3 L 414.3 216.6 L 418.0 216.6 L 421.8 216.6 L 425.6 216.2 L 429.4 216.2 L 433.2 215.9 L 437.0 215.9 L 440.7 215.9 L 444.5 215.6 L 448.3 215.6 L 452.1 215.6 L 455.9 215.2 L 459.6 215.2 L 463.4 215.2 L 467.2 214.7 L 471.0 214.7 L 474.8 214.7 L 478.5 214.4 L 482.3 214.0 L 486.1 213.8 L 489.9 213.8 L 493.7 213.7 L 497.4 213.5 L 501.2 213.4 L 505.0 213.4 L 508.8 213.4 L 512.6 213.1 L 516.3 213.1 L 520.1 212.7 L 523.9 212.7 L 527.7 212.7 L 531.5 212.4 L 535.2 212.4 L 539.0 212.4 L 542.8 211.7 L 546.6 211.7 L 550.4 211.7 L 554.1 211.5 L 557.9 211.2 L 561.7 211.2 L 565.5 211.2 L 569.3 210.9 L 573.0 210.9 L 576.8 210.9 L 580.6 210.8 L 584.4 210.8 L 588.2 210.8 L 592.0 210.6 L 595.7 210.6 L 599.5 210.6 L 603.3 210.0 L 607.1 210.0 L 610.9 210.0 L 614.6 209.3 L 618.4 209.3 L 622.2 209.3 L 626.0 208.9 L 629.8 208.8 L 633.5 208.8 L 637.3 208.8 L 641.1 208.7 L 644.9 208.5 L 648.7 208.5 L 652.4 208.5 L 656.2 208.2 L 660.0 208.0 L 660 248 Z" fill="url(#ctx)" stroke="#7aa2f7" stroke-width="2"/>
+  <rect x="40" y="258" width="291" height="15" rx="3" fill="#9ece6a"/><rect x="333" y="258" width="205" height="15" rx="3" fill="#bb9af7"/><rect x="540" y="258" width="84" height="15" rx="3" fill="#e0af68"/><rect x="626" y="258" width="24" height="15" rx="3" fill="#7aa2f7"/><rect x="652" y="258" width="7" height="15" rx="3" fill="#7dcfff"/>
+  <text x="40" y="290" fill="#565f89" font-size="11" letter-spacing="1">TOOL MIX · Write 34 · PowerShell 24 · Edit 10 · Read 3 · Grep 1</text>
+  <text x="660" y="305" fill="#414868" font-size="10" text-anchor="end">watch your AI work</text>
+</svg>
