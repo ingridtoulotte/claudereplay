@@ -9,6 +9,7 @@ file edits, commands and context growth, step by step, on a scrubbable timeline.
 Pure Python standard library. No dependencies. Cross-platform. Local-only.
 
 Usage:
+    claudereplay demo                 # try it now on a bundled sample session
     claudereplay list                 # discover sessions on this machine
     claudereplay build <session>      # build a single-file interactive HTML replay
     claudereplay open  <session>      # build + open it in your browser
@@ -901,6 +902,26 @@ def cmd_open(args):
     webbrowser.open(out.resolve().as_uri())
 
 
+def cmd_demo(args):
+    """Build + open a replay from a bundled sample session — no setup needed."""
+    import tempfile
+    out = Path(args.output) if args.output else Path("claudereplay-demo.html")
+    with tempfile.TemporaryDirectory() as td:
+        p = Path(td) / "claudereplay-demo.jsonl"
+        p.write_text("\n".join(_demo_transcript()), encoding="utf-8")
+        s = parse_session(p, redact=args.redact,
+                          max_result_bytes=args.max_result_bytes)
+    s.id = "claudereplay-demo"
+    out.write_text(build_html(s), encoding="utf-8")
+    c = s.counts()
+    print(f"▶ {out}  ({_human_bytes(out.stat().st_size)})")
+    print(f"  bundled sample · {c['events']} events · {c['prompts']} prompts · "
+          f"{c['tools']} tools · {len(s.files)} files · ctx peak {s.ctx_peak:,}")
+    if not args.no_open:
+        webbrowser.open(out.resolve().as_uri())
+    return out
+
+
 def cmd_summary(args):
     path = resolve_session(args.session, args.projects)
     s = parse_session(path, redact=args.redact)
@@ -937,6 +958,167 @@ def cmd_selftest(args):
 # --------------------------------------------------------------------------- #
 # Self-test (synthetic transcript -> assertions; no network, no real data)
 # --------------------------------------------------------------------------- #
+
+def _demo_transcript() -> list[str]:
+    """A realistic, watchable sample session shipped for `claudereplay demo`.
+
+    A believable 'add a dark-mode toggle' session: reads, a grep, an edit that
+    misses, a fix, a 130-line component write, a passing test run.  Crafted so
+    the analyzer lights up every key-moment type — the point is to *show* the
+    product to someone who has no sessions of their own yet."""
+    theme_ctx = (
+        "import { createContext, useContext, useEffect, useState } from 'react';\n"
+        "\n"
+        "const ThemeContext = createContext(null);\n"
+        "const STORAGE_KEY = 'app.theme';\n"
+        "const THEMES = ['light', 'dark', 'system'];\n"
+        "\n"
+        "function systemPrefersDark() {\n"
+        "  return window.matchMedia('(prefers-color-scheme: dark)').matches;\n"
+        "}\n"
+        "\n"
+        "function resolve(theme) {\n"
+        "  if (theme === 'system') return systemPrefersDark() ? 'dark' : 'light';\n"
+        "  return theme;\n"
+        "}\n"
+        "\n"
+        "export function ThemeProvider({ children }) {\n"
+        "  const [theme, setTheme] = useState(() => {\n"
+        "    return localStorage.getItem(STORAGE_KEY) || 'system';\n"
+        "  });\n"
+        "  const resolved = resolve(theme);\n"
+        "\n"
+        "  useEffect(() => {\n"
+        "    document.documentElement.dataset.theme = resolved;\n"
+        "    localStorage.setItem(STORAGE_KEY, theme);\n"
+        "  }, [theme, resolved]);\n"
+        "\n"
+        "  useEffect(() => {\n"
+        "    if (theme !== 'system') return;\n"
+        "    const mq = window.matchMedia('(prefers-color-scheme: dark)');\n"
+        "    const onChange = () => setTheme('system');\n"
+        "    mq.addEventListener('change', onChange);\n"
+        "    return () => mq.removeEventListener('change', onChange);\n"
+        "  }, [theme]);\n"
+        "\n"
+        "  const cycle = () => {\n"
+        "    const i = THEMES.indexOf(theme);\n"
+        "    setTheme(THEMES[(i + 1) % THEMES.length]);\n"
+        "  };\n"
+        "\n"
+        "  return (\n"
+        "    <ThemeContext.Provider value={{ theme, resolved, setTheme, cycle }}>\n"
+        "      {children}\n"
+        "    </ThemeContext.Provider>\n"
+        "  );\n"
+        "}\n"
+        "\n"
+        "export function useTheme() {\n"
+        "  const ctx = useContext(ThemeContext);\n"
+        "  if (!ctx) throw new Error('useTheme must be used within ThemeProvider');\n"
+        "  return ctx;\n"
+        "}\n"
+    )
+    # pad to a believable component length so it trips the 'build' heuristic
+    theme_ctx += "\n".join(f"// note {i}: keep the toggle accessible (aria-pressed)"
+                          for i in range(70))
+
+    def ts(sec):
+        m, s = divmod(sec, 60)
+        return f"2026-06-13T14:{20 + m:02d}:{s:02d}.000Z"
+
+    def asst(t, content, ctx):
+        return {"type": "assistant", "timestamp": t,
+                "message": {"model": "claude-opus-4-8",
+                            "usage": {"input_tokens": 1400,
+                                      "cache_read_input_tokens": ctx,
+                                      "output_tokens": 220},
+                            "content": content}}
+
+    def result(t, tid, out, err=False):
+        return {"type": "user", "timestamp": t,
+                "message": {"role": "user", "content": [
+                    {"type": "tool_result", "tool_use_id": tid,
+                     "content": out, "is_error": err}]}}
+
+    recs = [
+        {"type": "ai-title", "aiTitle": "Add a dark-mode toggle",
+         "sessionId": "claudereplay-demo"},
+        {"type": "user", "timestamp": ts(0),
+         "message": {"role": "user", "content":
+                     "Add a dark-mode toggle to the settings page. It should "
+                     "remember the choice and follow the OS setting by default."}},
+        asst(ts(6), [
+            {"type": "thinking", "thinking":
+             "First understand the current settings page and how theming is "
+             "wired today. Likely a CSS variable on :root keyed off a data "
+             "attribute. Let me read the page and grep for any theme code."},
+            {"type": "text", "text":
+             "Let me look at the settings page and how theming works today."},
+            {"type": "tool_use", "id": "t1", "name": "Read",
+             "input": {"file_path": "src/pages/Settings.jsx"}}], 9000),
+        result(ts(7), "t1",
+               "export function Settings() {\n  return (\n    <section>\n"
+               "      <h1>Settings</h1>\n      <ProfileForm />\n"
+               "      <NotificationPrefs />\n    </section>\n  );\n}\n"),
+        asst(ts(12), [
+            {"type": "tool_use", "id": "t2", "name": "Grep",
+             "input": {"pattern": "data-theme|prefers-color-scheme",
+                       "output_mode": "files_with_matches"}}], 22000),
+        result(ts(13), "t2", "src/styles/tokens.css\nsrc/main.jsx\n"),
+        asst(ts(20), [
+            {"type": "text", "text":
+             "Theming reads `:root[data-theme]`. I'll add a ThemeProvider that "
+             "owns the choice, then drop a toggle into Settings."},
+            {"type": "tool_use", "id": "t3", "name": "Edit",
+             "input": {"file_path": "src/pages/Settings.jsx",
+                       "old_string": "      <NotificationPrefs />\n",
+                       "new_string": "      <NotificationPrefs />\n"
+                                     "      <ThemeToggle />\n"}}], 41000),
+        result(ts(21), "t3",
+               "Error: String to replace not found in file. "
+               "(the file uses two-space indent but the block is nested deeper)",
+               err=True),
+        asst(ts(28), [
+            {"type": "thinking", "thinking":
+             "My old_string indentation was wrong. Re-read the exact lines and "
+             "match them precisely this time."},
+            {"type": "tool_use", "id": "t4", "name": "Read",
+             "input": {"file_path": "src/pages/Settings.jsx"}}], 52000),
+        result(ts(29), "t4",
+               "      <ProfileForm />\n      <NotificationPrefs />\n"),
+        asst(ts(36), [
+            {"type": "tool_use", "id": "t5", "name": "Edit",
+             "input": {"file_path": "src/pages/Settings.jsx",
+                       "old_string": "      <NotificationPrefs />",
+                       "new_string": "      <NotificationPrefs />\n"
+                                     "      <ThemeToggle />"}}], 63000),
+        result(ts(37), "t5", "The file src/pages/Settings.jsx has been updated."),
+        asst(ts(48), [
+            {"type": "text", "text":
+             "Now the provider + hook. It persists to localStorage and tracks "
+             "the OS preference when set to 'system'."},
+            {"type": "tool_use", "id": "t6", "name": "Write",
+             "input": {"file_path": "src/theme/ThemeContext.jsx",
+                       "content": theme_ctx}}], 88000),
+        result(ts(50), "t6", "File created: src/theme/ThemeContext.jsx"),
+        asst(ts(70), [
+            {"type": "tool_use", "id": "t7", "name": "Bash",
+             "input": {"command": "npm test -- theme"}}], 119000),
+        result(ts(86), "t7",
+               "PASS  src/theme/__tests__/theme.test.jsx\n"
+               "  ThemeProvider\n    ✓ defaults to system (12 ms)\n"
+               "    ✓ persists the choice (8 ms)\n"
+               "    ✓ cycles light -> dark -> system (5 ms)\n\n"
+               "Tests: 3 passed, 3 total\n"),
+        asst(ts(96), [
+            {"type": "text", "text":
+             "Done. Added a `ThemeProvider` (persists to localStorage, follows "
+             "the OS by default), a `useTheme` hook, and a toggle in Settings. "
+             "Tests pass."}], 121000),
+    ]
+    return [json.dumps(r) for r in recs]
+
 
 def _synthetic_transcript() -> list[str]:
     base = "2026-06-13T10:00:"
@@ -1075,6 +1257,16 @@ def run_selftest() -> int:
         res = [e for e in sb.events if e["kind"] == "result"][0]
         ok("result truncated", res["trunc"] and len(res["out"]) == 1000 and res["bytes"] == 50000)
 
+        # bundled demo session: parses, lights up the analyzer, builds HTML
+        dp = Path(td) / "demo.jsonl"
+        dp.write_text("\n".join(_demo_transcript()), encoding="utf-8")
+        ds = parse_session(dp)
+        dtypes = {m["type"] for m in ds.moments}
+        ok("demo parses", ds.title == "Add a dark-mode toggle" and len(ds.events) > 12)
+        ok("demo has mistake+fix", {"mistake", "fix"} <= dtypes)
+        ok("demo has build moment", "build" in dtypes)
+        ok("demo builds html", len(build_html(ds)) > 5000)
+
     npass = sum(1 for _, v in checks if v)
     nfail = len(checks) - npass
     for name, v in checks:
@@ -1103,6 +1295,15 @@ def build_parser() -> argparse.ArgumentParser:
     pl.add_argument("--limit", type=int, default=40)
     pl.add_argument("--json", action="store_true")
     pl.set_defaults(func=cmd_list)
+
+    pd = sub.add_parser("demo", help="build + open a bundled sample replay (no setup)")
+    pd.add_argument("-o", "--output", help="output path")
+    pd.add_argument("--redact", action="store_true",
+                    help="scrub secrets/keys/tokens from output")
+    pd.add_argument("--no-open", action="store_true", help="build only, don't open")
+    pd.add_argument("--max-result-bytes", type=int, default=DEFAULT_MAX_RESULT_BYTES,
+                    help="truncate tool outputs longer than this in HTML")
+    pd.set_defaults(func=cmd_demo)
 
     common = dict()
     for name, help_ in (("build", "build single-file HTML replay"),
@@ -1143,7 +1344,8 @@ def main(argv=None):
     if not getattr(args, "cmd", None):
         parser.print_help()
         return 0
-    return args.func(args) or 0
+    rv = args.func(args)
+    return rv if isinstance(rv, int) else 0
 
 
 # --------------------------------------------------------------------------- #

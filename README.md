@@ -6,7 +6,7 @@
 
 Replay any [Claude Code](https://claude.com/claude-code) session like a movie — every prompt, every thought, every tool call, every file edit, every command, scrubbable on a timeline.
 
-[![selftest](https://img.shields.io/badge/selftest-29%2F29%20passing-9ece6a?style=flat-square)](#tested)
+[![selftest](https://img.shields.io/badge/selftest-33%2F33%20passing-9ece6a?style=flat-square)](#tested)
 [![python](https://img.shields.io/badge/python-3.8%2B-7aa2f7?style=flat-square)](#install)
 [![deps](https://img.shields.io/badge/dependencies-0-bb9af7?style=flat-square)](#why-its-different)
 [![local](https://img.shields.io/badge/100%25-local-7dcfff?style=flat-square)](#privacy)
@@ -14,16 +14,21 @@ Replay any [Claude Code](https://claude.com/claude-code) session like a movie �
 
 <br>
 
-![ClaudeReplay UI](examples/screenshot-replay.png)
+![ClaudeReplay — animated demo](examples/demo.svg)
 
-<sub>A real session — "Publish project", 192 events, 28 minutes — replayed in the browser. Press ▶ and watch it happen.</sub>
+<sub>↑ This is the actual UI, looping. Prompt → reasoning → tool call → an error → the fix → a new file, with context climbing 9k → 122k on the right. Now imagine it's *your* session.</sub>
 
 </div>
 
 ```bash
-# zero install — just Python
-python claudereplay.py open last      # build + open the most recent session as a movie
+# No Claude Code sessions yet? See it in 10 seconds on a bundled sample:
+python claudereplay.py demo
+
+# Got sessions? Replay your most recent one as a movie:
+python claudereplay.py open last
 ```
+
+> **⭐ If "watch your AI work" sounds useful, star the repo** — it's the signal that tells me to keep building (side-by-side diffs, GIF export, team galleries — see the [roadmap](#roadmap)).
 
 ---
 
@@ -68,13 +73,20 @@ A Claude Code session is one of the most information-dense artifacts you will ev
 git clone https://github.com/ingridtoulotte/claudereplay
 cd claudereplay
 
-python claudereplay.py list          # see every session on this machine
-python claudereplay.py open 0        # build + open #0 as an interactive movie
+python claudereplay.py demo          # ① try it instantly on a bundled sample
+python claudereplay.py list          # ② see every real session on this machine
+python claudereplay.py open last     # ③ replay your most recent one
 ```
 
-No pip install, no dependencies, no config. ClaudeReplay reads the session
-transcripts Claude Code already writes to `~/.claude/projects/` and turns them
-into something you can watch.
+No pip install, no dependencies, no config, no account. ClaudeReplay reads the
+session transcripts Claude Code already writes to `~/.claude/projects/` and turns
+them into something you can watch. The `demo` command ships its own sample session,
+so it works even before you've ever run Claude Code.
+
+Here's a real one — *"Publish project"*, 192 events, 28 minutes — replayed in the
+browser. Press **▶** and watch it happen:
+
+![ClaudeReplay UI](examples/screenshot-replay.png)
 
 ---
 
@@ -201,25 +213,30 @@ python claudereplay.py build 0 --redact -o share-me.html
 
 ## <a name="install"></a>Install
 
-**The repo is the install.** It's a single dependency-free file.
+**The repo *is* the install** — one dependency-free file, Python 3.8+. Pick a lane:
 
 ```bash
+# 1. One file, nothing else — grab it and run (no clone, no pip)
+curl -fsSL https://raw.githubusercontent.com/ingridtoulotte/claudereplay/main/claudereplay.py -o claudereplay.py
+python claudereplay.py demo
+
+# 2. Clone the repo
 git clone https://github.com/ingridtoulotte/claudereplay
-python claudereplay/claudereplay.py list
+python claudereplay/claudereplay.py demo
+
+# 3. A real command on your PATH
+pipx install .                 # or: pip install --user .
+claudereplay demo
 ```
 
-Prefer a command on your `PATH`? (Python 3.8+)
-
-```bash
-pip install --user .            # or: pipx install .
-claudereplay list
-```
+No build step, no `node_modules`, no Docker. If Python runs, ClaudeReplay runs.
 
 ---
 
 ## Commands
 
 ```text
+claudereplay demo                  # build + open a bundled sample replay (no setup)
 claudereplay list                  # discover sessions (newest first)
 claudereplay list --json           # machine-readable, for scripts
 claudereplay build  <session>      # → <id>.html   (single portable file)
@@ -227,7 +244,7 @@ claudereplay open   <session>      # build, then open in your browser
 claudereplay summary <session>     # → markdown (stdout, or -o file.md)
 claudereplay card   <session>      # → <id>.svg   (shareable card)
 claudereplay timeline <session>    # → <id>.timeline.svg
-claudereplay --selftest            # run the built-in test suite
+claudereplay --selftest            # run the built-in test suite (33 checks)
 ```
 
 `<session>` is an **index** from `list`, a **session-id prefix**, or a **path**
@@ -257,10 +274,10 @@ it get there?"*** — by letting you watch.
 
 ## <a name="tested"></a>Trust signals & performance
 
-- **`--selftest`: 29/29 checks pass.** Parsing, event counts, context growth,
+- **`--selftest`: 33/33 checks pass.** Parsing, event counts, context growth,
   file-diff reconstruction, every intelligence heuristic, all four output
-  formats, redaction, and truncation are asserted against a synthetic
-  transcript — no network, no real data needed.
+  formats, redaction, truncation, and the bundled `demo` session are asserted
+  against synthetic transcripts — no network, no real data needed.
 - **Measured on a real 12 MB session (433 events):** parse **23 ms**, build the
   full interactive HTML **3 ms**, output **390 KB**.
 - **126 real sessions parsed in 0.5 s.**
@@ -270,6 +287,10 @@ it get there?"*** — by letting you watch.
 ---
 
 ## FAQ
+
+**I haven't used Claude Code much — can I still try it?**
+Yes. `claudereplay demo` builds and opens a replay from a sample session that
+ships inside the script. Zero setup, no data of your own required.
 
 **Where do sessions come from?**
 Claude Code records every session as JSONL under `~/.claude/projects/`.
@@ -298,8 +319,8 @@ Yes — point it at any `.jsonl`, or share a `--redact`ed HTML.
 
 ## Roadmap
 
-**v0.1 (now)** — discovery, parser, interactive HTML replay, summary, card,
-timeline, intelligence, selftest.
+**v0.1 (now)** — bundled `demo`, discovery, parser, interactive HTML replay,
+summary, card, animated + static timeline, intelligence, 33-check selftest.
 
 **Toward v1** — side-by-side session diff ("how did two attempts at the same
 task differ?"), subagent timelines inlined into the parent, a `gallery`

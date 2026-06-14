@@ -1,5 +1,16 @@
 # Changelog
 
+## Unreleased
+
+- **`demo` command** — `claudereplay demo` builds and opens an interactive
+  replay from a realistic sample session bundled in the script. Lets anyone try
+  ClaudeReplay in seconds, even with no sessions of their own. Covered by
+  selftest (now 33 checks).
+- **Animated SVG hero** (`examples/demo.svg`) — a looping mock of the replay UI
+  that plays directly on the GitHub README.
+- **Fix** — non-`int` command return values no longer leak a non-zero process
+  exit code (`build`/`open`/`demo` now exit `0` on success).
+
 ## 0.1.0 — 2026-06-13
 
 First release. Replay any Claude Code session like a movie.

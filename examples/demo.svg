@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="590" viewBox="0 0 1200 590"
+     font-family="ui-sans-serif,Segoe UI,Helvetica,Arial,sans-serif">
+  <defs>
+    <linearGradient id="ctxfill" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#7aa2f7" stop-opacity="0.55"/>
+      <stop offset="1" stop-color="#7aa2f7" stop-opacity="0.04"/>
+    </linearGradient>
+    <clipPath id="reveal">
+      <rect x="776" y="146" height="98" width="0">
+        <animate attributeName="width" dur="9.0s" repeatCount="indefinite"
+                 values="0;380" keyTimes="0;1" calcMode="linear"/>
+      </rect>
+    </clipPath>
+  </defs>
+
+  <rect width="1200" height="590" rx="16" fill="#16161e"/>
+
+  <!-- header -->
+  <rect x="0" y="0" width="1200" height="48" fill="#1a1b26"/>
+  <line x1="0" y1="48" x2="1200" y2="48" stroke="#2a2e42"/>
+  <text x="28" y="30" font-size="15" font-weight="800" letter-spacing="1.5" fill="#c0caf5">
+    <tspan fill="#7aa2f7">&#9654;</tspan> CLAUDEREPLAY</text>
+  <text x="190" y="30" font-size="14" font-weight="700" fill="#fff">Add a dark-mode toggle</text>
+  <g font-size="11" fill="#565f89">
+    <rect x="940" y="13" width="74" height="22" rx="11" fill="none" stroke="#2a2e42"/>
+    <text x="977" y="28" text-anchor="middle">opus-4-8</text>
+    <rect x="1022" y="13" width="92" height="22" rx="11" fill="none" stroke="#2a2e42"/>
+    <text x="1068" y="28" text-anchor="middle">2026-06-13</text>
+    <rect x="1122" y="13" width="58" height="22" rx="11" fill="none" stroke="#2a2e42"/>
+    <text x="1151" y="28" text-anchor="middle">1m 36s</text>
+  </g>
+
+  <!-- left: event stream -->
+  <g opacity="0.26"><animate attributeName="opacity" dur="9.0s" repeatCount="indefinite" values="0.26;0.26;1;1" keyTimes="0;0.050;0.050;1" calcMode="discrete"/><rect x="40" y="70" width="30" height="30" rx="8" fill="#26345e"/><text x="55" y="90" text-anchor="middle" font-size="15" fill="#9db4ff">&#128172;</text><rect x="82" y="70" width="578" height="56" rx="11" fill="#1f2335" stroke="#2a2e42"/><rect x="82" y="70" width="578" height="56" rx="11" fill="none" stroke="#7aa2f7" stroke-width="1.6" opacity="0"><animate attributeName="opacity" dur="9.0s" repeatCount="indefinite" values="0;0;0.9;0;0" keyTimes="0;0.030;0.050;0.150;1"/></rect><text x="96" y="88" font-size="10.5" letter-spacing="0.4" fill="#565f89">YOUR PROMPT</text><text x="96" y="106" font-size="13" fill="#c0caf5" >Add a dark-mode toggle to the settings page.</text></g>
+<g opacity="0.26"><animate attributeName="opacity" dur="9.0s" repeatCount="indefinite" values="0.26;0.26;1;1" keyTimes="0;0.200;0.200;1" calcMode="discrete"/><rect x="40" y="138" width="30" height="30" rx="8" fill="#202231"/><text x="55" y="158" text-anchor="middle" font-size="15" fill="#7c83a8">&#128173;</text><rect x="82" y="138" width="578" height="52" rx="11" fill="#1f2335" stroke="#2a2e42"/><rect x="82" y="138" width="578" height="52" rx="11" fill="none" stroke="#7c83a8" stroke-width="1.6" opacity="0"><animate attributeName="opacity" dur="9.0s" repeatCount="indefinite" values="0;0;0.9;0;0" keyTimes="0;0.180;0.200;0.300;1"/></rect><text x="96" y="156" font-size="10.5" letter-spacing="0.4" fill="#565f89">CLAUDE · THINKING</text><text x="96" y="174" font-size="13" fill="#7c83a8" >Theming reads :root[data-theme] — add a provider, then a toggle.</text></g>
+<g opacity="0.26"><animate attributeName="opacity" dur="9.0s" repeatCount="indefinite" values="0.26;0.26;1;1" keyTimes="0;0.340;0.340;1" calcMode="discrete"/><rect x="40" y="200" width="30" height="30" rx="8" fill="#1d2a4d"/><text x="55" y="220" text-anchor="middle" font-size="15" fill="#7aa2f7">&#128065;</text><rect x="82" y="200" width="578" height="74" rx="11" fill="#1f2335" stroke="#2a2e42"/><rect x="82" y="200" width="578" height="74" rx="11" fill="none" stroke="#7aa2f7" stroke-width="1.6" opacity="0"><animate attributeName="opacity" dur="9.0s" repeatCount="indefinite" values="0;0;0.9;0;0" keyTimes="0;0.320;0.340;0.440;1"/></rect><text x="96" y="218" font-size="10.5" letter-spacing="0.4" fill="#565f89">TOOL CALL · READ</text><text x="96" y="236" font-size="13" fill="#c0caf5" font-family="ui-monospace,Consolas,monospace">src/pages/Settings.jsx</text><text x="96" y="256" font-size="13" fill="#565f89" >&#8627; returns 9 lines</text></g>
+<g opacity="0.26"><animate attributeName="opacity" dur="9.0s" repeatCount="indefinite" values="0.26;0.26;1;1" keyTimes="0;0.520;0.520;1" calcMode="discrete"/><rect x="40" y="284" width="30" height="30" rx="8" fill="#341d24"/><text x="55" y="304" text-anchor="middle" font-size="15" fill="#f7768e">&#9888;</text><rect x="82" y="284" width="578" height="60" rx="11" fill="#1f2335" stroke="#2a2e42"/><rect x="82" y="284" width="578" height="60" rx="11" fill="none" stroke="#f7768e" stroke-width="1.6" opacity="0"><animate attributeName="opacity" dur="9.0s" repeatCount="indefinite" values="0;0;0.9;0;0" keyTimes="0;0.500;0.520;0.620;1"/></rect><text x="96" y="302" font-size="10.5" letter-spacing="0.4" fill="#565f89">RESULT · ERROR</text><text x="96" y="320" font-size="13" fill="#f7768e" font-family="ui-monospace,Consolas,monospace">String to replace not found in file.</text></g>
+<g opacity="0.26"><animate attributeName="opacity" dur="9.0s" repeatCount="indefinite" values="0.26;0.26;1;1" keyTimes="0;0.700;0.700;1" calcMode="discrete"/><rect x="40" y="354" width="30" height="30" rx="8" fill="#352c18"/><text x="55" y="374" text-anchor="middle" font-size="15" fill="#e0af68">&#9999;</text><rect x="82" y="354" width="578" height="76" rx="11" fill="#1f2335" stroke="#2a2e42"/><rect x="82" y="354" width="578" height="76" rx="11" fill="none" stroke="#e0af68" stroke-width="1.6" opacity="0"><animate attributeName="opacity" dur="9.0s" repeatCount="indefinite" values="0;0;0.9;0;0" keyTimes="0;0.680;0.700;0.800;1"/></rect><text x="96" y="372" font-size="10.5" letter-spacing="0.4" fill="#565f89">TOOL CALL · EDIT  →  &#10003; FIXED</text><text x="96" y="390" font-size="13" fill="#9ece6a" font-family="ui-monospace,Consolas,monospace">+ <ThemeToggle /></text><text x="96" y="410" font-size="13" fill="#565f89" >matched on the second try</text></g>
+<g opacity="0.26"><animate attributeName="opacity" dur="9.0s" repeatCount="indefinite" values="0.26;0.26;1;1" keyTimes="0;0.880;0.880;1" calcMode="discrete"/><rect x="40" y="440" width="30" height="30" rx="8" fill="#23341f"/><text x="55" y="460" text-anchor="middle" font-size="15" fill="#9ece6a">&#10003;</text><rect x="82" y="440" width="578" height="60" rx="11" fill="#1f2335" stroke="#2a2e42"/><rect x="82" y="440" width="578" height="60" rx="11" fill="none" stroke="#9ece6a" stroke-width="1.6" opacity="0"><animate attributeName="opacity" dur="9.0s" repeatCount="indefinite" values="0;0;0.9;0;0" keyTimes="0;0.860;0.880;0.980;1"/></rect><text x="96" y="458" font-size="10.5" letter-spacing="0.4" fill="#565f89">TOOL CALL · WRITE</text><text x="96" y="476" font-size="13" fill="#9ece6a" font-family="ui-monospace,Consolas,monospace">src/theme/ThemeContext.jsx  (130 lines)</text></g>
+
+  <!-- right rail -->
+  <line x1="752" y1="48" x2="752" y2="590" stroke="#2a2e42"/>
+  <text x="776" y="92" font-size="11" letter-spacing="1" fill="#565f89">CONTEXT GROWTH</text>
+  <rect x="776" y="146" width="380" height="98" rx="8" fill="#1a1b26"/>
+  <g clip-path="url(#reveal)">
+    <path d="M 776.0 240.0 L 776.0 240.0 L 785.7 235.9 L 795.5 232.6 L 805.2 229.5 L 815.0 226.7 L 824.7 224.1 L 834.5 221.8 L 844.2 219.7 L 853.9 217.5 L 863.7 215.1 L 873.4 212.4 L 883.2 209.4 L 892.9 206.3 L 902.7 203.3 L 912.4 200.7 L 922.2 198.6 L 931.9 197.1 L 941.6 195.9 L 951.4 194.7 L 961.1 193.3 L 970.9 191.2 L 980.6 188.4 L 990.4 185.1 L 1000.1 181.5 L 1009.8 178.1 L 1019.6 175.4 L 1029.3 173.6 L 1039.1 172.7 L 1048.8 172.4 L 1058.6 172.1 L 1068.3 171.2 L 1078.1 169.5 L 1087.8 166.6 L 1097.5 162.8 L 1107.3 158.6 L 1117.0 154.8 L 1126.8 151.8 L 1136.5 150.1 L 1146.3 150.0 L 1156.0 150.0 L 1156.0 240.0 Z" fill="url(#ctxfill)"/>
+    <path d="M 776.0 240.0 L 785.7 235.9 L 795.5 232.6 L 805.2 229.5 L 815.0 226.7 L 824.7 224.1 L 834.5 221.8 L 844.2 219.7 L 853.9 217.5 L 863.7 215.1 L 873.4 212.4 L 883.2 209.4 L 892.9 206.3 L 902.7 203.3 L 912.4 200.7 L 922.2 198.6 L 931.9 197.1 L 941.6 195.9 L 951.4 194.7 L 961.1 193.3 L 970.9 191.2 L 980.6 188.4 L 990.4 185.1 L 1000.1 181.5 L 1009.8 178.1 L 1019.6 175.4 L 1029.3 173.6 L 1039.1 172.7 L 1048.8 172.4 L 1058.6 172.1 L 1068.3 171.2 L 1078.1 169.5 L 1087.8 166.6 L 1097.5 162.8 L 1107.3 158.6 L 1117.0 154.8 L 1126.8 151.8 L 1136.5 150.1 L 1146.3 150.0 L 1156.0 150.0" fill="none" stroke="#7aa2f7" stroke-width="2"/>
+  </g>
+  
+  <line y1="150" y2="240" stroke="#7aa2f7" stroke-width="1.5" opacity="0.7">
+    <animate attributeName="x1" dur="9.0s" repeatCount="indefinite" values="776;1156" keyTimes="0;1"/>
+    <animate attributeName="x2" dur="9.0s" repeatCount="indefinite" values="776;1156" keyTimes="0;1"/>
+  </line>
+  <text x="776" y="262" font-size="11" fill="#565f89">
+    9k &#8594; <tspan fill="#c0caf5">122k</tspan> tokens · peak 122,400</text>
+
+  <text x="776" y="285" font-size="11" letter-spacing="1" fill="#565f89">KEY MOMENTS</text>
+  <g opacity="0.22"><animate attributeName="opacity" dur="9.0s" repeatCount="indefinite" values="0.22;0.22;1;1" keyTimes="0;0.520;0.520;1" calcMode="discrete"/><text x="776" y="312" font-size="12.5"><tspan fill="#f7768e">&#10007;</tspan></text><text x="798" y="312" font-size="12.5" fill="#c0caf5">Mistake</text><text x="798" y="328" font-size="10.5" fill="#565f89">#9 · edit missed</text></g>
+<g opacity="0.22"><animate attributeName="opacity" dur="9.0s" repeatCount="indefinite" values="0.22;0.22;1;1" keyTimes="0;0.700;0.700;1" calcMode="discrete"/><text x="776" y="350" font-size="12.5"><tspan fill="#9ece6a">&#10003;</tspan></text><text x="798" y="350" font-size="12.5" fill="#c0caf5">Fixed</text><text x="798" y="366" font-size="10.5" fill="#565f89">#12 · Settings.jsx</text></g>
+<g opacity="0.22"><animate attributeName="opacity" dur="9.0s" repeatCount="indefinite" values="0.22;0.22;1;1" keyTimes="0;0.880;0.880;1" calcMode="discrete"/><text x="776" y="388" font-size="12.5"><tspan fill="#9ece6a">&#9632;</tspan></text><text x="798" y="388" font-size="12.5" fill="#c0caf5">New component</text><text x="798" y="404" font-size="10.5" fill="#565f89">#16 · 130 lines</text></g>
+
+  <!-- scrubber -->
+  <text x="44" y="515" font-size="11" letter-spacing="1" fill="#565f89">TIMELINE</text>
+  <rect x="44" y="543" width="1112" height="4" rx="2" fill="#2a2e42"/>
+  <rect x="44.0" y="541.0" width="2.4" height="13" rx="1" fill="#7aa2f7"/><rect x="63.5" y="541.0" width="2.4" height="13" rx="1" fill="#7aa2f7"/><rect x="83.0" y="541.0" width="2.4" height="13" rx="1" fill="#7dcfff"/><rect x="102.5" y="541.0" width="2.4" height="13" rx="1" fill="#7aa2f7"/><rect x="122.0" y="541.0" width="2.4" height="13" rx="1" fill="#e0af68"/><rect x="141.5" y="541.0" width="2.4" height="13" rx="1" fill="#7aa2f7"/><rect x="161.1" y="541.0" width="2.4" height="13" rx="1" fill="#7aa2f7"/><rect x="180.6" y="541.0" width="2.4" height="13" rx="1" fill="#e0af68"/><rect x="200.1" y="541.0" width="2.4" height="13" rx="1" fill="#7aa2f7"/><rect x="219.6" y="541.0" width="2.4" height="13" rx="1" fill="#9ece6a"/><rect x="239.1" y="541.0" width="2.4" height="13" rx="1" fill="#7aa2f7"/><rect x="258.6" y="541.0" width="2.4" height="13" rx="1" fill="#7aa2f7"/><rect x="278.1" y="541.0" width="2.4" height="13" rx="1" fill="#bb9af7"/><rect x="297.6" y="541.0" width="2.4" height="13" rx="1" fill="#7aa2f7"/><rect x="317.1" y="541.0" width="2.4" height="13" rx="1" fill="#7aa2f7"/><rect x="336.6" y="541.0" width="2.4" height="13" rx="1" fill="#7aa2f7"/><rect x="356.1" y="541.0" width="2.4" height="13" rx="1" fill="#7aa2f7"/><rect x="375.6" y="541.0" width="2.4" height="13" rx="1" fill="#7dcfff"/><rect x="395.2" y="541.0" width="2.4" height="13" rx="1" fill="#7aa2f7"/><rect x="414.7" y="541.0" width="2.4" height="13" rx="1" fill="#e0af68"/><rect x="434.2" y="541.0" width="2.4" height="13" rx="1" fill="#7aa2f7"/><rect x="453.7" y="541.0" width="2.4" height="13" rx="1" fill="#7aa2f7"/><rect x="473.2" y="541.0" width="2.4" height="13" rx="1" fill="#7dcfff"/><rect x="492.7" y="541.0" width="2.4" height="13" rx="1" fill="#7aa2f7"/><rect x="512.2" y="541.0" width="2.4" height="13" rx="1" fill="#7aa2f7"/><rect x="531.7" y="541.0" width="2.4" height="13" rx="1" fill="#7aa2f7"/><rect x="551.2" y="538.0" width="2.4" height="16" rx="1" fill="#f7768e"/><rect x="570.7" y="541.0" width="2.4" height="13" rx="1" fill="#e0af68"/><rect x="590.2" y="541.0" width="2.4" height="13" rx="1" fill="#7aa2f7"/><rect x="609.8" y="541.0" width="2.4" height="13" rx="1" fill="#9ece6a"/><rect x="629.3" y="541.0" width="2.4" height="13" rx="1" fill="#7aa2f7"/><rect x="648.8" y="541.0" width="2.4" height="13" rx="1" fill="#7aa2f7"/><rect x="668.3" y="541.0" width="2.4" height="13" rx="1" fill="#bb9af7"/><rect x="687.8" y="541.0" width="2.4" height="13" rx="1" fill="#7aa2f7"/><rect x="707.3" y="541.0" width="2.4" height="13" rx="1" fill="#7aa2f7"/><rect x="726.8" y="541.0" width="2.4" height="13" rx="1" fill="#7aa2f7"/><rect x="746.3" y="541.0" width="2.4" height="13" rx="1" fill="#7aa2f7"/><rect x="765.8" y="541.0" width="2.4" height="13" rx="1" fill="#7dcfff"/><rect x="785.3" y="541.0" width="2.4" height="13" rx="1" fill="#7aa2f7"/><rect x="804.8" y="541.0" width="2.4" height="13" rx="1" fill="#e0af68"/><rect x="824.4" y="541.0" width="2.4" height="13" rx="1" fill="#7aa2f7"/><rect x="843.9" y="541.0" width="2.4" height="13" rx="1" fill="#7aa2f7"/><rect x="863.4" y="541.0" width="2.4" height="13" rx="1" fill="#7dcfff"/><rect x="882.9" y="541.0" width="2.4" height="13" rx="1" fill="#7aa2f7"/><rect x="902.4" y="541.0" width="2.4" height="13" rx="1" fill="#7aa2f7"/><rect x="921.9" y="541.0" width="2.4" height="13" rx="1" fill="#7aa2f7"/><rect x="941.4" y="538.0" width="2.4" height="16" rx="1" fill="#f7768e"/><rect x="960.9" y="541.0" width="2.4" height="13" rx="1" fill="#e0af68"/><rect x="980.4" y="541.0" width="2.4" height="13" rx="1" fill="#7aa2f7"/><rect x="999.9" y="541.0" width="2.4" height="13" rx="1" fill="#9ece6a"/><rect x="1019.4" y="541.0" width="2.4" height="13" rx="1" fill="#7aa2f7"/><rect x="1038.9" y="541.0" width="2.4" height="13" rx="1" fill="#7aa2f7"/><rect x="1058.5" y="541.0" width="2.4" height="13" rx="1" fill="#bb9af7"/><rect x="1078.0" y="541.0" width="2.4" height="13" rx="1" fill="#7aa2f7"/><rect x="1097.5" y="541.0" width="2.4" height="13" rx="1" fill="#7aa2f7"/><rect x="1117.0" y="541.0" width="2.4" height="13" rx="1" fill="#7aa2f7"/><rect x="1136.5" y="541.0" width="2.4" height="13" rx="1" fill="#7aa2f7"/><rect x="1156.0" y="541.0" width="2.4" height="13" rx="1" fill="#7dcfff"/>
+  <circle cx="377.6" cy="559.0" r="3.4" fill="#bb9af7"/><circle cx="600.0" cy="559.0" r="3.4" fill="#bb9af7"/><circle cx="800.2" cy="559.0" r="3.4" fill="#bb9af7"/><circle cx="1000.3" cy="559.0" r="3.4" fill="#bb9af7"/>
+  
+  <g>
+    <line x1="44" y1="523" x2="44" y2="567" stroke="#7aa2f7" stroke-width="2" opacity="0.85">
+      <animate attributeName="x1" dur="9.0s" repeatCount="indefinite" values="44;1156" keyTimes="0;1"/>
+      <animate attributeName="x2" dur="9.0s" repeatCount="indefinite" values="44;1156" keyTimes="0;1"/>
+    </line>
+    <circle cy="545" r="6" fill="#7aa2f7" stroke="#16161e" stroke-width="2">
+      <animate attributeName="cx" dur="9.0s" repeatCount="indefinite" values="44;1156" keyTimes="0;1"/>
+    </circle>
+  </g>
+
+  <!-- transport -->
+  <circle cx="58" cy="564" r="15" fill="#7aa2f7"/>
+  <path d="M 54 557 L 54 571 L 66 564 Z" fill="#16161e"/>
+  <text x="86" y="569" font-size="12" fill="#565f89" font-family="ui-monospace,Consolas,monospace">
+    space play · &#8592;/&#8594; step · &#8593;/&#8595; speed · 1&#215;&#8211;20&#215; · click a &#9670; to jump</text>
+  <text x="1156" y="569" text-anchor="end" font-size="11" fill="#565f89">21 events · 7 tools · 2 files</text>
+</svg>

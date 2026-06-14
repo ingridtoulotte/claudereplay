@@ -12,6 +12,8 @@ venv/
 /*.html
 /*.svg
 /*.md.out
+claudereplay-demo.html
+examples/_demo_preview.png
 _check.js
 _dom.html
 
